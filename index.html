@@ -834,8 +834,29 @@
         let answers = [];
         let userData = {};
 
+        // Formspree endpoint URL
+        const FORMSPREE_URL = 'https://formspree.io/f/xeorvrbp';
+
+        // Function to send data to Formspree
+        function sendToFormspree(data) {
+            fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Contact data sent successfully:', result);
+            })
+            .catch(error => {
+                console.error('Error sending contact data:', error);
+            });
+        }
+
         // Handle form submission
-        document.getElementById('userDetailsForm').addEventListener('submit', function(e) {
+        document.getElementById('userDetailsForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             userData = {
@@ -845,12 +866,28 @@
                 phone: document.getElementById('phone').value
             };
 
-            // Move to quiz
-            document.getElementById('contactForm').classList.remove('active');
-            document.getElementById('scorecardQuiz').classList.add('active');
-            document.getElementById('totalQuestions').textContent = questions.length;
+            // Disable submit button to prevent double submission
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saving...';
 
-            displayQuestion();
+            // Send data to Formspree (don't wait for it to complete)
+            sendToFormspree(userData);
+
+            // Small delay to ensure the request is sent, then proceed
+            setTimeout(() => {
+                // Move to quiz
+                document.getElementById('contactForm').classList.remove('active');
+                document.getElementById('scorecardQuiz').classList.add('active');
+                document.getElementById('totalQuestions').textContent = questions.length;
+
+                displayQuestion();
+
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }, 500);
         });
 
         function displayQuestion() {

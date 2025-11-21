@@ -1,962 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuadGorilla - Unleash Your Power</title>
-
-    <style>
-        /* Global */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: #00ff88;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #00ff88;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a4d2e 100%);
-            color: white;
-            padding: 150px 2rem 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: #00ff88;
-            color: #0a0a0a;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
-            background: #00dd77;
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: #1a4d2e;
-        }
-
-        /* Features Grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            align-items: start;
-        }
-
-        /* Feature Card (merged duplicate definitions) */
-        .feature-card {
-            background: #ffffff;
-            border-radius: 12px;
-            width: 100%;
-            padding: 2rem 2rem 1rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            border: 2px solid transparent;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
-            border-color: #00ff88;
-        }
-
-        .feature-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #1a4d2e;
-        }
-
-        .feature-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease;
-            margin-top: 10px;
-        }
-
-        .feature-card:hover:not(.locked) .feature-content,
-        .feature-card.locked .feature-content {
-            max-height: 200px;
-        }
-
-        /* About */
-        .about {
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #00ff88;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: #666;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: #00ff88;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            inset: 0;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: white;
-            margin: 2% auto;
-            padding: 3rem;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 700px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: slideIn 0.3s;
-            box-shadow: 0 10px 50px rgba(0, 255, 136, 0.3);
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 2rem;
-            font-weight: bold;
-            line-height: 1;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #00ff88;
-        }
-
-        .form-step {
-            display: none;
-        }
-
-        .form-step.active {
-            display: block;
-            animation: fadeIn 0.3s;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #1a4d2e;
-        }
-
-        .required {
-            color: #ff4444;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #00ff88;
-        }
-
-        /* Progress Bar */
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #00ff88 0%, #00dd77 100%);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            text-align: center;
-            color: #666;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        /* Question Styles */
-        .question-container {
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .question-title {
-            font-size: 1.8rem;
-            color: #1a4d2e;
-            margin-bottom: 1rem;
-        }
-
-        .question-description {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .score-selector {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            justify-content: center;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .score-button {
-            width: 60px;
-            height: 60px;
-            border: 2px solid #ddd;
-            background: white;
-            border-radius: 12px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .score-button:hover {
-            transform: scale(1.1);
-            border-color: #00ff88;
-            background: #f0fff8;
-            color: #00ff88;
-        }
-
-        /* Textarea and Choice Styles */
-        .question-textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-family: inherit;
-            resize: vertical;
-            min-height: 120px;
-            transition: border-color 0.3s;
-        }
-
-        .question-textarea:focus {
-            outline: none;
-            border-color: #00ff88;
-        }
-
-        .choice-selector {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .choice-button {
-            padding: 1.2rem 2rem;
-            border: 2px solid #ddd;
-            background: white;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .choice-button:hover {
-            transform: translateY(-3px);
-            border-color: #00ff88;
-            background: #f0fff8;
-            color: #00ff88;
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
-        }
-
-        /* Yes/No Buttons */
-        .yesno-selector {
-            display: flex;
-            gap: 1.5rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .yesno-button {
-            flex: 1;
-            padding: 1.5rem 2rem;
-            border: 3px solid;
-            background: white;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .yes-button {
-            border-color: #00ff88;
-            color: #00ff88;
-        }
-
-        .yes-button:hover {
-            background: #00ff88;
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3);
-        }
-
-        .no-button {
-            border-color: #ff4444;
-            color: #ff4444;
-        }
-
-        .no-button:hover {
-            background: #ff4444;
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(255, 68, 68, 0.3);
-        }
-
-        /* Results Styles */
-        .results-card {
-            text-align: center;
-        }
-
-        .score-circle {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00ff88 0%, #00dd77 100%);
-            margin: 2rem auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
-        }
-
-        .score-number {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: white;
-        }
-
-        .score-label {
-            font-size: 1rem;
-            color: white;
-            opacity: 0.9;
-        }
-
-        .score-breakdown {
-            text-align: left;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: #f9f9f9;
-            border-radius: 10px;
-        }
-
-        .breakdown-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .breakdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .breakdown-label {
-            color: #333;
-            flex: 1;
-        }
-
-        .breakdown-score {
-            font-weight: bold;
-            color: #00ff88;
-            margin-left: 1rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .modal-content {
-                width: 95%;
-                padding: 2rem 1.5rem;
-                margin: 5% auto;
-            }
-
-            .question-title {
-                font-size: 1.4rem;
-            }
-
-            .score-button {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .score-circle {
-                width: 150px;
-                height: 150px;
-            }
-
-            .score-number {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo">QuadGorilla</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <a href="/" class="logo">QuadGorilla</a>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>QuadGorilla</h1>
-            <p>Transform Your Body, Elevate Your Life. Expert fitness guidance for every journey.</p>
-            <a href="#" class="cta-button" id="startTransformationBtn">Start Your Transformation</a>
-        </div>
+      <div class="hero-content">
+        <h1>QuadGorilla</h1>
+        <p>
+          Transform Your Body, Elevate Your Life. Expert fitness guidance for
+          every journey.
+        </p>
+        <a href="#" class="cta-button" id="startTransformationBtn"
+          >Start Your Transformation</a
+        >
+      </div>
     </section>
 
     <section id="features">
+      <div class="container">
         <h2>Powerful Features</h2>
-
         <div class="features">
-
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-icon">💪</div>
-                    <h3>Strength Training</h3>
-                </div>
-                <div class="feature-content">
-                    <p>Build lean muscle and increase power with scientifically-backed strength programs tailored to your goals.</p>
-                </div>
+          <div class="feature-card">
+            <div class="feature-header">
+              <div class="feature-icon">💪</div>
+              <h3>Strength Training</h3>
             </div>
-
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-icon">🏃</div>
-                    <h3>Cardio Excellence</h3>
-                </div>
-                <div class="feature-content">
-                    <p>Boost endurance and burn fat with dynamic cardio routines designed for maximum results and sustainability.</p>
-                </div>
+            <div class="feature-content">
+              <p>
+                Build lean muscle and increase power with scientifically-backed
+                strength programs tailored to your goals.
+              </p>
             </div>
+          </div>
 
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-icon">🥗</div>
-                    <h3>Nutrition Coaching</h3>
-                </div>
-                <div class="feature-content">
-                    <p>Fuel your body right with personalized nutrition plans that complement your training and lifestyle.</p>
-                </div>
+          <div class="feature-card">
+            <div class="feature-header">
+              <div class="feature-icon">🏃</div>
+              <h3>Cardio Excellence</h3>
             </div>
-
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Goal Setting</h3>
-                </div>
-                <div class="feature-content">
-                    <p>Set achievable milestones and track your progress with structured programs that keep you motivated.</p>
-                </div>
+            <div class="feature-content">
+              <p>
+                Boost endurance and burn fat with dynamic cardio routines
+                designed for maximum results and sustainability.
+              </p>
             </div>
+          </div>
 
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-icon">🧘</div>
-                    <h3>Recovery & Mobility</h3>
-                </div>
-                <div class="feature-content">
-                    <p>Optimize performance and prevent injury with proper recovery techniques and mobility training.</p>
-                </div>
+          <div class="feature-card">
+            <div class="feature-header">
+              <div class="feature-icon">🥗</div>
+              <h3>Nutrition Coaching</h3>
             </div>
-
-            <div class="feature-card">
-                <div class="feature-header">
-                    <div class="feature-icon">📚</div>
-                    <h3>Expert Guidance</h3>
-                </div>
-                <div class="feature-content">
-                    <p>Learn from proven methods and comprehensive resources including our Fitness Starter Guide.</p>
-                </div>
+            <div class="feature-content">
+              <p>
+                Fuel your body right with personalized nutrition plans that
+                complement your training and lifestyle.
+              </p>
             </div>
+          </div>
 
+          <div class="feature-card">
+            <div class="feature-header">
+              <div class="feature-icon">🎯</div>
+              <h3>Goal Setting</h3>
+            </div>
+            <div class="feature-content">
+              <p>
+                Set achievable milestones and track your progress with
+                structured programs that keep you motivated.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-header">
+              <div class="feature-icon">🧘</div>
+              <h3>Recovery & Mobility</h3>
+            </div>
+            <div class="feature-content">
+              <p>
+                Optimize performance and prevent injury with proper recovery
+                techniques and mobility training.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-header">
+              <div class="feature-icon">📚</div>
+              <h3>Expert Guidance</h3>
+            </div>
+            <div class="feature-content">
+              <p>
+                Learn from proven methods and comprehensive resources including
+                our Fitness Starter Guide.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-
     <section id="about" class="about">
+      <div class="container">
         <h2>Why Choose QuadGorilla?</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem;">
-            QuadGorilla provides comprehensive fitness solutions backed by science and real results. Whether you're just starting out or looking to break through plateaus, we have the tools and knowledge to help you succeed.
+        <p
+          style="
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+          "
+        >
+          QuadGorilla provides comprehensive fitness solutions backed by science
+          and real results. Whether you're just starting out or looking to break
+          through plateaus, we have the tools and knowledge to help you succeed.
         </p>
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <a href="https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0 1rem 1rem;">📖 Get the Fitness Starter Guide on Kindle</a>
+        <div style="text-align: center; margin-bottom: 3rem">
+          <a
+            href="https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-button"
+            style="margin: 0 1rem 1rem"
+            >📖 Get the Fitness Starter Guide on Kindle</a
+          >
         </div>
         <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number">1100+</div>
-                <div class="stat-label">Clients Transformed</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">86%</div>
-                <div class="stat-label">Commitment</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">4.3★</div>
-                <div class="stat-label">Client Rating</div>
-            </div>
+          <div class="stat-card">
+            <div class="stat-number">48+</div>
+            <div class="stat-label">Clients Transformed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">86%</div>
+            <div class="stat-label">Commitment</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4.3★</div>
+            <div class="stat-label">Client Rating</div>
+          </div>
         </div>
+      </div>
     </section>
 
     <footer id="contact">
-        <h2 style="color: white; margin-bottom: 1rem;">Get in Touch</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Ready to start your fitness journey with QuadGorilla?</p>
+      <h2 style="color: white; margin-bottom: 1rem">Get in Touch</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 1.5rem">
+        Ready to start your fitness journey with QuadGorilla?
+      </p>
 
-        <div style="margin: 2rem 0;">
-            <p style="font-size: 1.3rem; margin: 0.5rem 0;">
-                <strong>📞 Phone:</strong> <a href="tel:704-491-5510" style="color: #00ff88; text-decoration: none;">704-491-5510</a>
-            </p>
-            <p style="font-size: 1.3rem; margin: 0.5rem 0;">
-                <strong>✉️ Email:</strong> <a href="mailto:quadgorilla@gmail.com" style="color: #00ff88; text-decoration: none;">quadgorilla@gmail.com</a>
-            </p>
-        </div>
+      <div style="margin: 2rem 0">
+        <p style="font-size: 1.3rem; margin: 0.5rem 0">
+          <strong>Phone:</strong>
+          <a
+            href="tel:704-491-5510"
+            style="color: #00ff88; text-decoration: none"
+            >704-491-5510</a
+          >
+        </p>
+        <p style="font-size: 1.3rem; margin: 0.5rem 0">
+          <strong>Email:</strong>
+          <a
+            href="mailto:quadgorilla@gmail.com"
+            style="color: #00ff88; text-decoration: none"
+            >quadgorilla@gmail.com</a
+          >
+        </p>
+      </div>
 
-        <div class="social-links">
-            <a href="#" title="Facebook">📘</a>
-            <a href="#" title="Instagram">📷</a>
-            <a href="#" title="YouTube">📺</a>
-            <a href="mailto:quadgorilla@gmail.com" title="Email">📧</a>
-        </div>
-        <p style="margin-top: 2rem; opacity: 0.7;">&copy; 2025 QuadGorilla Fitness. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-button" title="Facebook">
+          <div class="flex flex-col items-center">
+            📘
+            <span>Facebook</span>
+          </div>
+        </a>
+        <a href="#" class="social-button" title="Instagram">
+          <div class="flex flex-col items-center">
+            📷
+            <span>Instagram</span>
+          </div>
+        </a>
+        <a href="#" class="social-button" title="YouTube">
+          <div class="flex flex-col items-center">
+            📺
+            <span>YouTube</span>
+          </div>
+        </a>
+        <a
+          href="mailto:quadgorilla@gmail.com"
+          class="social-button"
+          title="Email"
+        >
+          <div class="flex flex-col items-center">
+            📧
+            <span>Email</span>
+          </div>
+        </a>
+      </div>
+      <p style="margin-top: 2rem; opacity: 0.7">
+        &copy; 2025 QuadGorilla Fitness. All rights reserved.
+      </p>
     </footer>
 
     <!-- Scorecard Modal -->
     <div id="scorecardModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+      <div class="modal-content">
+        <span class="close">&times;</span>
 
-            <!-- Contact Form -->
-            <div id="contactForm" class="form-step active">
-                <h2>Start Your Fitness Scorecard</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: #666;">Enter your details below to start the scorecard</p>
+        <!-- Contact Form -->
+        <div id="contactForm" class="form-step active">
+          <h2>Start Your Fitness Scorecard</h2>
+          <p style="text-align: center; margin-bottom: 2rem; color: #666">
+            Enter your details below to start the scorecard
+          </p>
 
-                <form id="userDetailsForm">
-                    <div class="form-group">
-                        <label for="firstName">First Name <span class="required">*</span></label>
-                        <input type="text" id="firstName" name="firstName" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lastName">Last Name <span class="required">*</span></label>
-                        <input type="text" id="lastName" name="lastName" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number (Optional)</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-
-                    <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">Begin Scorecard</button>
-                </form>
+          <form id="userDetailsForm">
+            <div class="form-group">
+              <label for="firstName"
+                >First Name <span class="required">*</span></label
+              >
+              <input type="text" id="firstName" name="firstName" required />
             </div>
 
-            <!-- Scorecard Quiz -->
-            <div id="scorecardQuiz" class="form-step">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <p class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></p>
-
-                <div id="quizContent">
-                    <!-- Quiz questions will be inserted here -->
-                </div>
+            <div class="form-group">
+              <label for="lastName"
+                >Last Name <span class="required">*</span></label
+              >
+              <input type="text" id="lastName" name="lastName" required />
             </div>
 
-            <!-- Results Page -->
-            <div id="scorecardResults" class="form-step">
-                <h2>Your Fitness Scorecard Results</h2>
-                <div id="resultsContent">
-                    <!-- Results will be displayed here -->
-                </div>
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required />
             </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number (Optional)</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+
+            <button
+              type="submit"
+              class="cta-button"
+              style="width: 100%; margin-top: 1rem"
+            >
+              Begin Scorecard
+            </button>
+          </form>
         </div>
+
+        <!-- Scorecard Quiz -->
+        <div id="scorecardQuiz" class="form-step">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="progress-text">
+            Question <span id="currentQuestion">1</span> of
+            <span id="totalQuestions">10</span>
+          </p>
+
+          <div id="quizContent">
+            <!-- Quiz questions will be inserted here -->
+          </div>
+        </div>
+
+        <!-- Results Page -->
+        <div id="scorecardResults" class="form-step">
+          <h2>Your Fitness Scorecard Results</h2>
+          <div id="resultsContent">
+            <!-- Results will be displayed here -->
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        // Modal functionality
-        const modal = document.getElementById('scorecardModal');
-        const btn = document.getElementById('startTransformationBtn');
-        const span = document.getElementsByClassName('close')[0];
+      // Modal functionality
+      const modal = document.getElementById("scorecardModal");
+      const btn = document.getElementById("startTransformationBtn");
+      const span = document.getElementsByClassName("close")[0];
 
-        btn.onclick = function(e) {
-            e.preventDefault();
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+      btn.onclick = function (e) {
+        e.preventDefault();
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+        resetScorecard();
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+          resetScorecard();
         }
+      };
 
-        span.onclick = function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            resetScorecard();
-        }
+      // Client questionnaire - 10 questions (6 yes/no, 2 multiple choice, 2 open-ended)
+      const questions = [
+        {
+          question:
+            "Do you consistently complete at least 3 workouts per week?",
+          type: "yesno",
+        },
+        {
+          question: "Have you been free from injury for the past 6 months?",
+          type: "yesno",
+        },
+        {
+          question:
+            "Do you fuel your body with balanced meals and adequate protein daily?",
+          type: "yesno",
+        },
+        {
+          question:
+            "Do you prioritize sleep and typically get at least 7 hours each night?",
+          type: "yesno",
+        },
+        {
+          question:
+            "Do you regularly stretch or include mobility work in your routine?",
+          type: "yesno",
+        },
+        {
+          question:
+            "Do you track your progress and celebrate small fitness milestones?",
+          type: "yesno",
+        },
+        {
+          question:
+            "How many days per week can you realistically commit to working out?",
+          description: "Choose your weekly commitment",
+          type: "choice",
+          options: ["1-2 days", "3-4 days", "5+ days"],
+        },
+        {
+          question: "What type of workouts do you enjoy most?",
+          description: "Select your preferred training style",
+          type: "choice",
+          options: [
+            "Strength Training (weights, resistance)",
+            "Cardio (running, cycling, HIIT)",
+            "Functional/CrossFit (varied movements)",
+            "Flexibility/Mobility (yoga, stretching)",
+          ],
+        },
+        {
+          question: "What are your top 3 fitness goals right now?",
+          description: "e.g., build muscle, lose 10 lbs, improve mobility",
+          type: "textarea",
+          placeholder: "Tell us what you want to achieve...",
+        },
+        {
+          question: "What motivates you to train and stay consistent?",
+          description: "Understanding your 'why' helps us keep you on track",
+          type: "textarea",
+          placeholder:
+            "e.g., family, job performance, health, stress relief, competition, confidence",
+        },
+      ];
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                resetScorecard();
-            }
-        }
+      let currentQuestionIndex = 0;
+      let answers = [];
+      let userData = {};
 
-        // Client questionnaire - 10 questions (6 yes/no, 2 multiple choice, 2 open-ended)
-        const questions = [
-            {
-                question: "Do you consistently complete at least 3 workouts per week?",
-                type: "yesno"
-            },
-            {
-                question: "Have you been free from injury for the past 6 months?",
-                type: "yesno"
-            },
-            {
-                question: "Do you fuel your body with balanced meals and adequate protein daily?",
-                type: "yesno"
-            },
-            {
-                question: "Do you prioritize sleep and typically get at least 7 hours each night?",
-                type: "yesno"
-            },
-            {
-                question: "Do you regularly stretch or include mobility work in your routine?",
-                type: "yesno"
-            },
-            {
-                question: "Do you track your progress and celebrate small fitness milestones?",
-                type: "yesno"
-            },
-            {
-                question: "How many days per week can you realistically commit to working out?",
-                description: "Choose your weekly commitment",
-                type: "choice",
-                options: ["1-2 days", "3-4 days", "5+ days"]
-            },
-            {
-                question: "What type of workouts do you enjoy most?",
-                description: "Select your preferred training style",
-                type: "choice",
-                options: [
-                    "Strength Training (weights, resistance)",
-                    "Cardio (running, cycling, HIIT)",
-                    "Functional/CrossFit (varied movements)",
-                    "Flexibility/Mobility (yoga, stretching)"
-                ]
-            },
-            {
-                question: "What are your top 3 fitness goals right now?",
-                description: "e.g., build muscle, lose 10 lbs, improve mobility",
-                type: "textarea",
-                placeholder: "Tell us what you want to achieve..."
-            },
-            {
-                question: "What motivates you to train and stay consistent?",
-                description: "Understanding your 'why' helps us keep you on track",
-                type: "textarea",
-                placeholder: "e.g., family, job performance, health, stress relief, competition, confidence"
-            }
-        ];
+      // Formspree endpoint URL
+      const FORMSPREE_URL = "https://formspree.io/f/xeorvrbp";
 
-        let currentQuestionIndex = 0;
-        let answers = [];
-        let userData = {};
+      // Function to send data to Formspree
+      function sendToFormspree(data) {
+        fetch(FORMSPREE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            console.log("Contact data sent successfully:", result);
+          })
+          .catch((error) => {
+            console.error("Error sending contact data:", error);
+          });
+      }
 
-        // Formspree endpoint URL
-        const FORMSPREE_URL = 'https://formspree.io/f/xeorvrbp';
+      // Handle form submission
+      document
+        .getElementById("userDetailsForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-        // Function to send data to Formspree
-        function sendToFormspree(data) {
-            fetch(FORMSPREE_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(result => {
-                console.log('Contact data sent successfully:', result);
-            })
-            .catch(error => {
-                console.error('Error sending contact data:', error);
-            });
-        }
+          userData = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+          };
 
-        // Handle form submission
-        document.getElementById('userDetailsForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+          // Disable submit button to prevent double submission
+          const submitBtn = e.target.querySelector('button[type="submit"]');
+          const originalText = submitBtn.textContent;
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Saving...";
 
-            userData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value
-            };
+          // Send data to Formspree (don't wait for it to complete)
+          sendToFormspree(userData);
 
-            // Disable submit button to prevent double submission
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Saving...';
+          // Small delay to ensure the request is sent, then proceed
+          setTimeout(() => {
+            // Move to quiz
+            document.getElementById("contactForm").classList.remove("active");
+            document.getElementById("scorecardQuiz").classList.add("active");
+            document.getElementById("totalQuestions").textContent =
+              questions.length;
 
-            // Send data to Formspree (don't wait for it to complete)
-            sendToFormspree(userData);
+            displayQuestion();
 
-            // Small delay to ensure the request is sent, then proceed
-            setTimeout(() => {
-                // Move to quiz
-                document.getElementById('contactForm').classList.remove('active');
-                document.getElementById('scorecardQuiz').classList.add('active');
-                document.getElementById('totalQuestions').textContent = questions.length;
-
-                displayQuestion();
-
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            }, 500);
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }, 500);
         });
 
-        function displayQuestion() {
-            const question = questions[currentQuestionIndex];
-            const quizContent = document.getElementById('quizContent');
+      function displayQuestion() {
+        const question = questions[currentQuestionIndex];
+        const quizContent = document.getElementById("quizContent");
 
-            let inputHTML = '';
-            if (question.type === 'yesno') {
-                inputHTML = `
+        let inputHTML = "";
+        if (question.type === "yesno") {
+          inputHTML = `
                     <div class="yesno-selector">
                         <button class="yesno-button yes-button" onclick="selectChoice('Yes')">
                             ✓ Yes
@@ -966,33 +464,43 @@
                         </button>
                     </div>
                 `;
-            } else if (question.type === 'textarea') {
-                inputHTML = `
+        } else if (question.type === "textarea") {
+          inputHTML = `
                     <textarea
                         id="questionInput"
                         class="question-textarea"
                         placeholder="${question.placeholder}"
                         rows="5"
-                    >${answers[currentQuestionIndex] || ''}</textarea>
+                    >${answers[currentQuestionIndex] || ""}</textarea>
                     <button class="cta-button" onclick="submitAnswer()" style="margin-top: 1rem; width: 100%;">
-                        ${currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'Complete Quiz'}
+                        ${
+                          currentQuestionIndex < questions.length - 1
+                            ? "Next Question"
+                            : "Complete Quiz"
+                        }
                     </button>
                 `;
-            } else if (question.type === 'choice') {
-                inputHTML = `
+        } else if (question.type === "choice") {
+          inputHTML = `
                     <div class="choice-selector">
-                        ${question.options.map(opt => `
+                        ${question.options
+                          .map(
+                            (opt) => `
                             <button class="choice-button" onclick="selectChoice('${opt}')" data-value="${opt}">
                                 ${opt}
                             </button>
-                        `).join('')}
+                        `
+                          )
+                          .join("")}
                     </div>
                 `;
-            }
+        }
 
-            const descriptionHTML = question.description ? `<p class="question-description">${question.description}</p>` : '';
+        const descriptionHTML = question.description
+          ? `<p class="question-description">${question.description}</p>`
+          : "";
 
-            quizContent.innerHTML = `
+        quizContent.innerHTML = `
                 <div class="question-container">
                     <h3 class="question-title">${question.question}</h3>
                     ${descriptionHTML}
@@ -1000,108 +508,127 @@
                 </div>
             `;
 
-            // Update progress
-            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
-            document.getElementById('totalQuestions').textContent = questions.length;
-            updateProgressBar();
+        // Update progress
+        document.getElementById("currentQuestion").textContent =
+          currentQuestionIndex + 1;
+        document.getElementById("totalQuestions").textContent =
+          questions.length;
+        updateProgressBar();
+      }
+
+      function submitAnswer() {
+        const input = document.getElementById("questionInput");
+        if (input && input.value.trim()) {
+          answers[currentQuestionIndex] = input.value.trim();
+          moveToNextQuestion();
+        } else {
+          alert("Please provide an answer before continuing.");
+        }
+      }
+
+      function selectChoice(choice) {
+        answers[currentQuestionIndex] = choice;
+        moveToNextQuestion();
+      }
+
+      function moveToNextQuestion() {
+        if (currentQuestionIndex < questions.length - 1) {
+          currentQuestionIndex++;
+          displayQuestion();
+        } else {
+          showResults();
+        }
+      }
+
+      function updateProgressBar() {
+        const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+        document.getElementById("progressFill").style.width = progress + "%";
+      }
+
+      function calculateScore() {
+        let totalScore = 0;
+        const maxScore = 100;
+
+        // Questions 0-5: Yes/No questions (10 points each for "Yes")
+        for (let i = 0; i < 6; i++) {
+          if (answers[i] === "Yes") {
+            totalScore += 10;
+          }
         }
 
-        function submitAnswer() {
-            const input = document.getElementById('questionInput');
-            if (input && input.value.trim()) {
-                answers[currentQuestionIndex] = input.value.trim();
-                moveToNextQuestion();
-            } else {
-                alert('Please provide an answer before continuing.');
-            }
+        // Question 6: Workout frequency (0-20 points)
+        if (answers[6] === "1-2 days") totalScore += 5;
+        else if (answers[6] === "3-4 days") totalScore += 15;
+        else if (answers[6] === "5+ days") totalScore += 20;
+
+        // Question 7: Workout type (10 points - all answers valued equally)
+        if (answers[7]) totalScore += 10;
+
+        // Questions 8-9: Open-ended (5 points each for completion)
+        if (answers[8] && answers[8].length > 10) totalScore += 5;
+        if (answers[9] && answers[9].length > 10) totalScore += 5;
+
+        return totalScore;
+      }
+
+      function showResults() {
+        document.getElementById("scorecardQuiz").classList.remove("active");
+        document.getElementById("scorecardResults").classList.add("active");
+
+        const score = calculateScore();
+        const maxScore = 100;
+        const percentage = Math.round((score / maxScore) * 100);
+
+        // Determine tier and recommendations
+        let tier,
+          tierColor,
+          message,
+          recommendation,
+          actionTitle,
+          actionDescription,
+          actionCTA,
+          actionLink;
+
+        if (percentage >= 70) {
+          tier = "Elite Performer";
+          tierColor = "#00ff88";
+          message =
+            "Outstanding! You're already operating at a high level with strong fitness habits.";
+          recommendation =
+            "You're ready for personalized 1-on-1 coaching to break through plateaus and reach peak performance.";
+          actionTitle = "🎯 Ready for the Next Level?";
+          actionDescription =
+            "Book a 1-on-1 coaching session to optimize your training and achieve elite results.";
+          actionCTA = "Schedule 1-on-1 Coaching";
+          actionLink = "tel:704-491-5510";
+        } else if (percentage >= 40) {
+          tier = "Building Momentum";
+          tierColor = "#ffa500";
+          message =
+            "Great start! You have some solid habits, but there's room to level up your fitness game.";
+          recommendation =
+            "Check out our comprehensive fitness guide to fill in the gaps and build consistency.";
+          actionTitle = "📖 Get the Fitness Starter Guide";
+          actionDescription =
+            "Learn proven strategies to improve your nutrition, recovery, and training consistency.";
+          actionCTA = "Get the Book on Kindle";
+          actionLink =
+            "https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD";
+        } else {
+          tier = "Fresh Start";
+          tierColor = "#ff6b6b";
+          message =
+            "Perfect timing to transform your fitness journey! Everyone starts somewhere.";
+          recommendation =
+            "Let's build a strong foundation with a sample workout to get you moving in the right direction.";
+          actionTitle = "💪 Try This Sample Workout";
+          actionDescription =
+            "A beginner-friendly full-body routine designed to build strength and confidence.";
+          actionCTA = "Download Free Workout";
+          actionLink = "#sample-workout";
         }
 
-        function selectChoice(choice) {
-            answers[currentQuestionIndex] = choice;
-            moveToNextQuestion();
-        }
-
-        function moveToNextQuestion() {
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                displayQuestion();
-            } else {
-                showResults();
-            }
-        }
-
-        function updateProgressBar() {
-            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-        }
-
-        function calculateScore() {
-            let totalScore = 0;
-            const maxScore = 100;
-
-            // Questions 0-5: Yes/No questions (10 points each for "Yes")
-            for (let i = 0; i < 6; i++) {
-                if (answers[i] === 'Yes') {
-                    totalScore += 10;
-                }
-            }
-
-            // Question 6: Workout frequency (0-20 points)
-            if (answers[6] === '1-2 days') totalScore += 5;
-            else if (answers[6] === '3-4 days') totalScore += 15;
-            else if (answers[6] === '5+ days') totalScore += 20;
-
-            // Question 7: Workout type (10 points - all answers valued equally)
-            if (answers[7]) totalScore += 10;
-
-            // Questions 8-9: Open-ended (5 points each for completion)
-            if (answers[8] && answers[8].length > 10) totalScore += 5;
-            if (answers[9] && answers[9].length > 10) totalScore += 5;
-
-            return totalScore;
-        }
-
-        function showResults() {
-            document.getElementById('scorecardQuiz').classList.remove('active');
-            document.getElementById('scorecardResults').classList.add('active');
-
-            const score = calculateScore();
-            const maxScore = 100;
-            const percentage = Math.round((score / maxScore) * 100);
-
-            // Determine tier and recommendations
-            let tier, tierColor, message, recommendation, actionTitle, actionDescription, actionCTA, actionLink;
-
-            if (percentage >= 70) {
-                tier = "Elite Performer";
-                tierColor = "#00ff88";
-                message = "Outstanding! You're already operating at a high level with strong fitness habits.";
-                recommendation = "You're ready for personalized 1-on-1 coaching to break through plateaus and reach peak performance.";
-                actionTitle = "🎯 Ready for the Next Level?";
-                actionDescription = "Book a 1-on-1 coaching session to optimize your training and achieve elite results.";
-                actionCTA = "Schedule 1-on-1 Coaching";
-                actionLink = "tel:704-491-5510";
-            } else if (percentage >= 40) {
-                tier = "Building Momentum";
-                tierColor = "#ffa500";
-                message = "Great start! You have some solid habits, but there's room to level up your fitness game.";
-                recommendation = "Check out our comprehensive fitness guide to fill in the gaps and build consistency.";
-                actionTitle = "📖 Get the Fitness Starter Guide";
-                actionDescription = "Learn proven strategies to improve your nutrition, recovery, and training consistency.";
-                actionCTA = "Get the Book on Kindle";
-                actionLink = "https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD";
-            } else {
-                tier = "Fresh Start";
-                tierColor = "#ff6b6b";
-                message = "Perfect timing to transform your fitness journey! Everyone starts somewhere.";
-                recommendation = "Let's build a strong foundation with a sample workout to get you moving in the right direction.";
-                actionTitle = "💪 Try This Sample Workout";
-                actionDescription = "A beginner-friendly full-body routine designed to build strength and confidence.";
-                actionCTA = "Download Free Workout";
-                actionLink = "#sample-workout";
-            }
-
-            document.getElementById('resultsContent').innerHTML = `
+        document.getElementById("resultsContent").innerHTML = `
                 <div class="results-card">
                     <div class="score-circle" style="background: linear-gradient(135deg, ${tierColor} 0%, ${tierColor}dd 100%);">
                         <div class="score-number">${percentage}%</div>
@@ -1117,7 +644,11 @@
                     <div style="margin: 2rem 0; padding: 1.5rem; background: ${tierColor}15; border-left: 4px solid ${tierColor}; border-radius: 10px;">
                         <h4 style="color: #1a4d2e; margin-bottom: 1rem;">${actionTitle}</h4>
                         <p style="color: #666; margin-bottom: 1.5rem;">${actionDescription}</p>
-                        <a href="${actionLink}" ${actionLink.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="cta-button" style="background: ${tierColor};">
+                        <a href="${actionLink}" ${
+          actionLink.startsWith("http")
+            ? 'target="_blank" rel="noopener noreferrer"'
+            : ""
+        } class="cta-button" style="background: ${tierColor};">
                             ${actionCTA}
                         </a>
                     </div>
@@ -1127,43 +658,48 @@
                             📋 View Your Complete Responses
                         </summary>
                         <div class="score-breakdown" style="margin-top: 1rem;">
-                            ${questions.map((q, i) => `
+                            ${questions
+                              .map(
+                                (q, i) => `
                                 <div class="breakdown-item" style="display: block; padding: 1rem 0; border-bottom: 1px solid #e0e0e0;">
                                     <div style="font-weight: 600; color: #1a4d2e; margin-bottom: 0.5rem; font-size: 0.95rem;">${q.question}</div>
                                     <div style="color: #555; padding-left: 0.5rem; white-space: pre-wrap;">${answers[i]}</div>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join("")}
                         </div>
                     </details>
 
                     <div style="margin-top: 2rem; padding: 1.5rem; background: #f0f0f0; border-radius: 10px; text-align: center;">
                         <h4 style="color: #1a4d2e; margin-bottom: 0.5rem;">Questions? Let's Talk!</h4>
-                        <p style="font-size: 0.95rem; color: #666; margin-bottom: 1rem;">We'll send your results to: <strong style="color: #00ff88;">${userData.email}</strong></p>
+                        <p style="font-size: 0.95rem; color: #666; margin-bottom: 1rem;">We'll send your results to: <strong style="color: #00ff88;">${
+                          userData.email
+                        }</strong></p>
                         <a href="tel:704-491-5510" class="cta-button" style="background: #1a4d2e; margin-top: 0.5rem;">📞 Call 704-491-5510</a>
                     </div>
                 </div>
             `;
-        }
+      }
 
-        function resetScorecard() {
-            currentQuestionIndex = 0;
-            answers = [];
-            userData = {};
+      function resetScorecard() {
+        currentQuestionIndex = 0;
+        answers = [];
+        userData = {};
 
-            document.getElementById('contactForm').classList.add('active');
-            document.getElementById('scorecardQuiz').classList.remove('active');
-            document.getElementById('scorecardResults').classList.remove('active');
+        document.getElementById("contactForm").classList.add("active");
+        document.getElementById("scorecardQuiz").classList.remove("active");
+        document.getElementById("scorecardResults").classList.remove("active");
 
-            document.getElementById('userDetailsForm').reset();
-        }
+        document.getElementById("userDetailsForm").reset();
+      }
 
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.addEventListener('click', e => {
-                e.preventDefault();
-                card.classList.toggle('locked');
-            });
+      document.querySelectorAll(".feature-card").forEach((card) => {
+        card.addEventListener("click", (e) => {
+          e.preventDefault();
+          card.classList.toggle("locked");
         });
-
+      });
     </script>
-</body>
+  </body>
 </html>

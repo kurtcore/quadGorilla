@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Quad Gorilla</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo">QuadGorilla</a>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero" style="padding: 150px 2rem 80px; min-height: auto">
+      <div class="hero-content">
+        <h1>Get in Touch</h1>
+        <p>Have questions? We're here to help you on your fitness journey.</p>
+      </div>
+    </section>
+
+    <section
+      class="container"
+      style="padding: 4rem 2rem; max-width: 800px; margin: 0 auto"
+    >
+      <div
+        id="form-container"
+        style="
+          background: white;
+          padding: 2rem;
+          border-radius: 15px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        "
+      >
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Name <span class="required">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your Name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject <span class="required">*</span></label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              placeholder="How can we help?"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message <span class="required">*</span></label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="6"
+              class="question-textarea"
+              placeholder="Tell us more..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="cta-button" style="width: 100%">
+            Send Message
+          </button>
+        </form>
+        <div
+          id="form-status"
+          style="margin-top: 1rem; text-align: center; display: none"
+        ></div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <h2 style="color: white; margin-bottom: 1rem">Get in Touch</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 1.5rem">
+        Ready to start your fitness journey with QuadGorilla?
+      </p>
+
+      <div style="margin: 2rem 0">
+        <p style="font-size: 1.3rem; margin: 0.5rem 0">
+          <strong>Phone:</strong>
+          <a
+            href="tel:704-491-5510"
+            style="color: #00ff88; text-decoration: none"
+            >704-491-5510</a
+          >
+        </p>
+        <p style="font-size: 1.3rem; margin: 0.5rem 0">
+          <strong>Email:</strong>
+          <a
+            href="mailto:quadgorilla@gmail.com"
+            style="color: #00ff88; text-decoration: none"
+            >quadgorilla@gmail.com</a
+          >
+        </p>
+      </div>
+
+      <div class="social-links">
+        <a href="#" class="social-button" title="Facebook">
+          <div class="flex flex-col items-center">
+            📘
+            <span>Facebook</span>
+          </div>
+        </a>
+        <a href="#" class="social-button" title="Instagram">
+          <div class="flex flex-col items-center">
+            📷
+            <span>Instagram</span>
+          </div>
+        </a>
+        <a href="#" class="social-button" title="YouTube">
+          <div class="flex flex-col items-center">
+            📺
+            <span>YouTube</span>
+          </div>
+        </a>
+        <a
+          href="mailto:quadgorilla@gmail.com"
+          class="social-button"
+          title="Email"
+        >
+          <div class="flex flex-col items-center">
+            📧
+            <span>Email</span>
+          </div>
+        </a>
+      </div>
+      <p style="margin-top: 2rem; opacity: 0.7">
+        &copy; 2025 QuadGorilla Fitness. All rights reserved.
+      </p>
+    </footer>
+
+    <script>
+      const form = document.getElementById("contactForm");
+      const status = document.getElementById("form-status");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        status.style.display = "none";
+
+        try {
+          const response = await fetch("https://formspree.io/f/xeorvrbp", {
+            method: "POST",
+            body: data,
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (response.ok) {
+            status.innerHTML =
+              '<p style="color: #1a4d2e; font-weight: bold; font-size: 1.2rem;">Thanks for your message! We\'ll get back to you soon.</p>';
+            form.reset();
+          } else {
+            const jsonData = await response.json();
+            let errorMsg =
+              'Oops! There was a problem submitting your form. Please try again later or reach out to us at <a href="mailto:quadgorilla@gmail.com">quadgorilla@gmail.com</a>';
+            if (jsonData.errors) {
+              errorMsg +=
+                ": " + jsonData.errors.map((error) => error.message).join(", ");
+            }
+            status.innerHTML = `<p style="color: #ff4444;">${errorMsg}</p>`;
+          }
+        } catch (error) {
+          status.innerHTML =
+            '<p style="color: #ff4444;">Oops! There was a problem submitting your form. Please try again later or reach out to us at <a href="mailto:quadgorilla@gmail.com">quadgorilla@gmail.com</a></p>';
+        }
+
+        status.style.display = "block";
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      });
+    </script>
+  </body>
+</html>

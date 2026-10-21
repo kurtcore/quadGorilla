@@ -1,207 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Quad Gorilla</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../styles.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/" class="logo">QuadGorilla</a>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Your Program | QuadGorilla Fitness</title>
+<meta name="description" content="Tell coach Ben Dragstrem your goal, experience and schedule, and get matched to a QuadGorilla program with a free weekly goal tracker.">
+<link rel="canonical" href="https://quadgorilla.com/contact/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Get Your Program | QuadGorilla Fitness">
+<meta property="og:description" content="Tell coach Ben Dragstrem your goal, experience and schedule, and get matched to a QuadGorilla program with a free weekly goal tracker.">
+<meta property="og:url" content="https://quadgorilla.com/contact/">
+<meta property="og:image" content="https://quadgorilla.com/images/quadgorilla-logo.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Big+Shoulders+Display:wght@800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Get Your Program | QuadGorilla Fitness", "url": "https://quadgorilla.com/contact/"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/images/gorilla-mark.png" alt="" width="46" height="43"><span>QuadGorilla</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="/programs/">Programs</a>
+      <a href="/about-us/">About</a>
+      <a href="/about-us/benjamin-dragstrem/">Coach Ben</a>
+      <a class="btn btn-red" href="/contact/">Get your program</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>Get your program</h1>
+    <p class="lede">Tell Ben where you're starting from. He'll match you to a program and send it with your free weekly goal tracker, usually within 24 hours.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <form class="form" id="signup" action="https://formspree.io/f/xeorvrbp" method="POST">
+      <input type="hidden" name="_subject" value="New QuadGorilla program request">
+      <fieldset>
+        <legend>What's your main goal?</legend>
+        <div class="goals">
+          <label><input type="radio" name="goal" value="Fat loss" required><span><strong>Fat loss</strong><small>8-week program</small></span></label>
+          <label><input type="radio" name="goal" value="Muscle gain" required><span><strong>Muscle gain</strong><small>12-week powerbuilding</small></span></label>
+          <label><input type="radio" name="goal" value="Comp prep" required><span><strong>Comp prep</strong><small>16-week program</small></span></label>
+          <label><input type="radio" name="goal" value="Military or first responder" required><span><strong>Military or first responder</strong><small>Readiness program</small></span></label>
+          <label><input type="radio" name="goal" value="Fire academy" required><span><strong>Fire academy</strong><small>4-week program</small></span></label>
+          <label><input type="radio" name="goal" value="General fitness" required><span><strong>General fitness</strong><small>6-week starter</small></span></label>
+        </div>
+      </fieldset>
+      <div class="row-2">
+        <div><label for="name">Full name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
+        <div><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+      </div>
+      <div class="row-2">
+        <div><label for="phone">Phone <span class="hint">(optional)</span></label><input type="tel" id="phone" name="phone" autocomplete="tel"></div>
+        <div><label for="experience">Training experience</label>
+          <select id="experience" name="experience" required>
+            <option value="">Choose one</option>
+            <option>Beginner (under 1 year)</option>
+            <option>Intermediate (1–3 years)</option>
+            <option>Advanced (3+ years)</option>
+          </select></div>
+      </div>
+      <div class="row-2">
+        <div><label for="days">Days you can train each week</label>
+          <select id="days" name="days" required>
+            <option value="">Choose one</option>
+            <option>3</option><option>4</option><option>5</option><option>6</option>
+          </select></div>
+      </div>
+      <div><label for="injuries">Injuries or limitations <span class="hint">(anything in the last 6 months)</span></label><textarea id="injuries" name="injuries"></textarea></div>
+      <div><label for="notes">Anything else Ben should know? <span class="hint">(optional)</span></label><textarea id="notes" name="notes"></textarea></div>
+      <div><button class="btn btn-red" type="submit">Get my program</button></div>
+      <p class="form-status" id="status" role="status" aria-live="polite"></p>
+    </form>
+
+    <aside>
+      <h2 style="font-size:2rem;margin-bottom:16px">Rather talk first?</h2>
+      <ul class="creds">
+        <li><strong>Email</strong><span><a href="mailto:quadgorilla@gmail.com">quadgorilla@gmail.com</a></span></li>
+        <li><strong>Phone or text</strong><span><a href="tel:+17044915510">704-491-5510</a></span></li>
+        <li><strong>Instagram</strong><span><a href="https://www.instagram.com/quadgorilla/" rel="noopener">@quadgorilla</a></span></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var f = document.getElementById('signup'), s = document.getElementById('status');
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = f.querySelector('button[type=submit]');
+      btn.disabled = true; btn.textContent = 'Sending';
+      s.className = 'form-status'; s.textContent = '';
+      fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error();
+          f.reset();
+          s.className = 'form-status ok';
+          s.textContent = "Sent. Ben will email your program match and weekly tracker, usually within 24 hours.";
+        })
+        .catch(function () {
+          s.className = 'form-status err';
+          s.innerHTML = 'Your request didn\u2019t send. Try again, or email <a href="mailto:quadgorilla@gmail.com">quadgorilla@gmail.com</a>.';
+        })
+        .finally(function () { btn.disabled = false; btn.textContent = 'Get my program'; });
+    });
+  })();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/images/quadgorilla-logo.png" alt="QuadGorilla Workout Company" width="120" height="120">
+        <p>Strength and conditioning programs from coach Ben Dragstrem. Building stronger, healthier Americans, one rep at a time.</p>
+      </div>
+      <div>
+        <h2>Train</h2>
         <ul>
-          <li><a href="/#features">Features</a></li>
-          <li><a href="/about-us">About Us</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="/programs/">Programs</a></li>
+          <li><a href="/contact/">Get your program</a></li>
+          <li><a href="https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD" rel="noopener">Ben's guide on Kindle</a></li>
         </ul>
-      </nav>
-    </header>
-
-    <section class="hero" style="padding: 150px 2rem 80px; min-height: auto">
-      <div class="hero-content">
-        <h1>Get in Touch</h1>
-        <p>Have questions? We're here to help you on your fitness journey.</p>
       </div>
-    </section>
-
-    <section
-      class="container"
-      style="padding: 4rem 2rem; max-width: 800px; margin: 0 auto"
-    >
-      <div
-        id="form-container"
-        style="
-          background: white;
-          padding: 2rem;
-          border-radius: 15px;
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        "
-      >
-        <form id="contactForm">
-          <div class="form-group">
-            <label for="name">Name <span class="required">*</span></label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              placeholder="Your Name"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email <span class="required">*</span></label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="your@email.com"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="subject">Subject <span class="required">*</span></label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              required
-              placeholder="How can we help?"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message <span class="required">*</span></label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows="6"
-              class="question-textarea"
-              placeholder="Tell us more..."
-            ></textarea>
-          </div>
-
-          <button type="submit" class="cta-button" style="width: 100%">
-            Send Message
-          </button>
-        </form>
-        <div
-          id="form-status"
-          style="margin-top: 1rem; text-align: center; display: none"
-        ></div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:quadgorilla@gmail.com">quadgorilla@gmail.com</a></li>
+          <li><a href="tel:+17044915510">704-491-5510</a></li>
+          <li><a href="https://www.instagram.com/quadgorilla/" rel="noopener">Instagram</a></li>
+        </ul>
       </div>
-    </section>
-
-    <footer id="contact">
-      <h2 style="color: white; margin-bottom: 1rem">Get in Touch</h2>
-      <p style="font-size: 1.2rem; margin-bottom: 1.5rem">
-        Ready to start your fitness journey with QuadGorilla?
-      </p>
-
-      <div style="margin: 2rem 0">
-        <p style="font-size: 1.3rem; margin: 0.5rem 0">
-          <strong>Phone:</strong>
-          <a
-            href="tel:704-491-5510"
-            style="color: #00ff88; text-decoration: none"
-            >704-491-5510</a
-          >
-        </p>
-        <p style="font-size: 1.3rem; margin: 0.5rem 0">
-          <strong>Email:</strong>
-          <a
-            href="mailto:quadgorilla@gmail.com"
-            style="color: #00ff88; text-decoration: none"
-            >quadgorilla@gmail.com</a
-          >
-        </p>
-      </div>
-
-      <div class="social-links">
-        <a href="#" class="social-button" title="Facebook">
-          <div class="flex flex-col items-center">
-            📘
-            <span>Facebook</span>
-          </div>
-        </a>
-        <a href="#" class="social-button" title="Instagram">
-          <div class="flex flex-col items-center">
-            📷
-            <span>Instagram</span>
-          </div>
-        </a>
-        <a href="#" class="social-button" title="YouTube">
-          <div class="flex flex-col items-center">
-            📺
-            <span>YouTube</span>
-          </div>
-        </a>
-        <a
-          href="mailto:quadgorilla@gmail.com"
-          class="social-button"
-          title="Email"
-        >
-          <div class="flex flex-col items-center">
-            📧
-            <span>Email</span>
-          </div>
-        </a>
-      </div>
-      <p style="margin-top: 2rem; opacity: 0.7">
-        &copy; 2025 QuadGorilla Fitness. All rights reserved.
-      </p>
-    </footer>
-
-    <script>
-      const form = document.getElementById("contactForm");
-      const status = document.getElementById("form-status");
-
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        const data = new FormData(e.target);
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-        status.style.display = "none";
-
-        try {
-          const response = await fetch("https://formspree.io/f/xeorvrbp", {
-            method: "POST",
-            body: data,
-            headers: {
-              Accept: "application/json",
-            },
-          });
-
-          if (response.ok) {
-            status.innerHTML =
-              '<p style="color: #1a4d2e; font-weight: bold; font-size: 1.2rem;">Thanks for your message! We\'ll get back to you soon.</p>';
-            form.reset();
-          } else {
-            const jsonData = await response.json();
-            let errorMsg =
-              'Oops! There was a problem submitting your form. Please try again later or reach out to us at <a href="mailto:quadgorilla@gmail.com">quadgorilla@gmail.com</a>';
-            if (jsonData.errors) {
-              errorMsg +=
-                ": " + jsonData.errors.map((error) => error.message).join(", ");
-            }
-            status.innerHTML = `<p style="color: #ff4444;">${errorMsg}</p>`;
-          }
-        } catch (error) {
-          status.innerHTML =
-            '<p style="color: #ff4444;">Oops! There was a problem submitting your form. Please try again later or reach out to us at <a href="mailto:quadgorilla@gmail.com">quadgorilla@gmail.com</a></p>';
-        }
-
-        status.style.display = "block";
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-      });
-    </script>
-  </body>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 QuadGorilla Fitness</p>
+      <p>Programs here are general training information, not medical advice. Check with your doctor before starting a new program, especially with an injury or health condition.</p>
+    </div>
+  </div>
+</footer>
+<script>
+  (function () {
+    var b = document.querySelector('.menu-toggle'), n = document.getElementById('site-nav');
+    if (!b || !n) return;
+    b.addEventListener('click', function () {
+      var open = n.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      b.textContent = open ? 'Close' : 'Menu';
+    });
+  })();
+</script>
+</body>
 </html>

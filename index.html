@@ -1,705 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QuadGorilla - Unleash Your Power</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/" class="logo">QuadGorilla</a>
-        <ul>
-          <li><a href="/#features">Features</a></li>
-          <li><a href="/about-us">About Us</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuadGorilla Fitness | Strength Programs and Coaching by Ben Dragstrem</title>
+<meta name="description" content="Strength, conditioning and fire academy prep programs from paramedic and natural physique competitor Ben Dragstrem. Get matched to a program with a weekly goal tracker.">
+<link rel="canonical" href="https://quadgorilla.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="QuadGorilla Fitness | Strength Programs and Coaching by Ben Dragstrem">
+<meta property="og:description" content="Strength, conditioning and fire academy prep programs from paramedic and natural physique competitor Ben Dragstrem. Get matched to a program with a weekly goal tracker.">
+<meta property="og:url" content="https://quadgorilla.com/">
+<meta property="og:image" content="https://quadgorilla.com/images/quadgorilla-logo.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Big+Shoulders+Display:wght@800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "QuadGorilla Fitness", "url": "https://quadgorilla.com/", "logo": "https://quadgorilla.com/images/quadgorilla-logo.png", "email": "quadgorilla@gmail.com", "telephone": "+1-704-491-5510", "founder": {"@type": "Person", "name": "Ben Dragstrem"}, "sameAs": ["https://www.instagram.com/quadgorilla/"]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/images/gorilla-mark.png" alt="" width="46" height="43"><span>QuadGorilla</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="/programs/">Programs</a>
+      <a href="/about-us/">About</a>
+      <a href="/about-us/benjamin-dragstrem/">Coach Ben</a>
+      <a class="btn btn-red" href="/contact/">Get your program</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
 
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h1>QuadGorilla</h1>
-        <p>
-          Transform Your Body, Elevate Your Life. Expert fitness guidance for
-          every journey.
-        </p>
-        <a href="#" class="cta-button" id="startTransformationBtn"
-          >Start Your Transformation</a
-        >
-      </div>
-    </section>
-
-    <section id="features">
-      <div class="container">
-        <h2>Powerful Features</h2>
-        <div class="features">
-          <div class="feature-card">
-            <div class="feature-header">
-              <div class="feature-icon">💪</div>
-              <h3>Strength Training</h3>
-            </div>
-            <div class="feature-content">
-              <p>
-                Build lean muscle and increase power with scientifically-backed
-                strength programs tailored to your goals.
-              </p>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-header">
-              <div class="feature-icon">🏃</div>
-              <h3>Cardio Excellence</h3>
-            </div>
-            <div class="feature-content">
-              <p>
-                Boost endurance and burn fat with dynamic cardio routines
-                designed for maximum results and sustainability.
-              </p>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-header">
-              <div class="feature-icon">🥗</div>
-              <h3>Nutrition Coaching</h3>
-            </div>
-            <div class="feature-content">
-              <p>
-                Fuel your body right with personalized nutrition plans that
-                complement your training and lifestyle.
-              </p>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-header">
-              <div class="feature-icon">🎯</div>
-              <h3>Goal Setting</h3>
-            </div>
-            <div class="feature-content">
-              <p>
-                Set achievable milestones and track your progress with
-                structured programs that keep you motivated.
-              </p>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-header">
-              <div class="feature-icon">🧘</div>
-              <h3>Recovery & Mobility</h3>
-            </div>
-            <div class="feature-content">
-              <p>
-                Optimize performance and prevent injury with proper recovery
-                techniques and mobility training.
-              </p>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-header">
-              <div class="feature-icon">📚</div>
-              <h3>Expert Guidance</h3>
-            </div>
-            <div class="feature-content">
-              <p>
-                Learn from proven methods and comprehensive resources including
-                our Fitness Starter Guide.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="about">
-      <div class="container">
-        <h2>Why Choose QuadGorilla?</h2>
-        <p
-          style="
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            font-size: 1.2rem;
-          "
-        >
-          QuadGorilla provides comprehensive fitness solutions backed by science
-          and real results. Whether you're just starting out or looking to break
-          through plateaus, we have the tools and knowledge to help you succeed.
-        </p>
-        <div style="text-align: center; margin-bottom: 3rem">
-          <a
-            href="https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cta-button"
-            style="margin: 0 1rem 1rem"
-            >📖 Get the Fitness Starter Guide on Kindle</a
-          >
-        </div>
-        <div class="stats">
-          <div class="stat-card">
-            <div class="stat-number">48+</div>
-            <div class="stat-label">Clients Transformed</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">10+</div>
-            <div class="stat-label">Years Experience</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">86%</div>
-            <div class="stat-label">Commitment</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">4.3★</div>
-            <div class="stat-label">Client Rating</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer id="contact">
-      <h2 style="color: white; margin-bottom: 1rem">Get in Touch</h2>
-      <p style="font-size: 1.2rem; margin-bottom: 1.5rem">
-        Ready to start your fitness journey with QuadGorilla?
-      </p>
-
-      <div style="margin: 2rem 0">
-        <p style="font-size: 1.3rem; margin: 0.5rem 0">
-          <strong>Phone:</strong>
-          <a
-            href="tel:704-491-5510"
-            style="color: #00ff88; text-decoration: none"
-            >704-491-5510</a
-          >
-        </p>
-        <p style="font-size: 1.3rem; margin: 0.5rem 0">
-          <strong>Email:</strong>
-          <a
-            href="mailto:quadgorilla@gmail.com"
-            style="color: #00ff88; text-decoration: none"
-            >quadgorilla@gmail.com</a
-          >
-        </p>
-      </div>
-
-      <div class="social-links">
-        <a href="#" class="social-button" title="Facebook">
-          <div class="flex flex-col items-center">
-            📘
-            <span>Facebook</span>
-          </div>
-        </a>
-        <a href="#" class="social-button" title="Instagram">
-          <div class="flex flex-col items-center">
-            📷
-            <span>Instagram</span>
-          </div>
-        </a>
-        <a href="#" class="social-button" title="YouTube">
-          <div class="flex flex-col items-center">
-            📺
-            <span>YouTube</span>
-          </div>
-        </a>
-        <a
-          href="mailto:quadgorilla@gmail.com"
-          class="social-button"
-          title="Email"
-        >
-          <div class="flex flex-col items-center">
-            📧
-            <span>Email</span>
-          </div>
-        </a>
-      </div>
-      <p style="margin-top: 2rem; opacity: 0.7">
-        &copy; 2025 QuadGorilla Fitness. All rights reserved.
-      </p>
-    </footer>
-
-    <!-- Scorecard Modal -->
-    <div id="scorecardModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-
-        <!-- Contact Form -->
-        <div id="contactForm" class="form-step active">
-          <h2>Start Your Fitness Scorecard</h2>
-          <p style="text-align: center; margin-bottom: 2rem; color: #666">
-            Enter your details below to start the scorecard
-          </p>
-
-          <form id="userDetailsForm">
-            <div class="form-group">
-              <label for="firstName"
-                >First Name <span class="required">*</span></label
-              >
-              <input type="text" id="firstName" name="firstName" required />
-            </div>
-
-            <div class="form-group">
-              <label for="lastName"
-                >Last Name <span class="required">*</span></label
-              >
-              <input type="text" id="lastName" name="lastName" required />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email <span class="required">*</span></label>
-              <input type="email" id="email" name="email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone Number (Optional)</label>
-              <input type="tel" id="phone" name="phone" />
-            </div>
-
-            <button
-              type="submit"
-              class="cta-button"
-              style="width: 100%; margin-top: 1rem"
-            >
-              Begin Scorecard
-            </button>
-          </form>
-        </div>
-
-        <!-- Scorecard Quiz -->
-        <div id="scorecardQuiz" class="form-step">
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-          <p class="progress-text">
-            Question <span id="currentQuestion">1</span> of
-            <span id="totalQuestions">10</span>
-          </p>
-
-          <div id="quizContent">
-            <!-- Quiz questions will be inserted here -->
-          </div>
-        </div>
-
-        <!-- Results Page -->
-        <div id="scorecardResults" class="form-step">
-          <h2>Your Fitness Scorecard Results</h2>
-          <div id="resultsContent">
-            <!-- Results will be displayed here -->
-          </div>
-        </div>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1><span class="line">Stronger,</span><span class="line">one rep</span><span class="line">at a time.</span></h1>
+      <p class="lede">Strength and conditioning programs from Ben Dragstrem: paramedic, natural physique competitor, and 15+ years under the bar. Built for lifters, first responders, and anyone starting over.</p>
+      <div class="actions">
+        <a class="btn btn-red" href="/contact/">Get your program</a>
+        <a class="btn" href="/programs/">See the programs</a>
       </div>
     </div>
+    <img class="hero-mark" src="/images/quadgorilla-logo.png" alt="QuadGorilla gorilla logo" width="400" height="400">
+  </div>
+  <div class="hero-bar" aria-hidden="true"></div>
+</section>
 
-    <script>
-      // Modal functionality
-      const modal = document.getElementById("scorecardModal");
-      const btn = document.getElementById("startTransformationBtn");
-      const span = document.getElementsByClassName("close")[0];
+<section class="section on-dark">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pick your program</h2>
+      <p class="muted lede">Six programs, each built around one goal. Not sure which fits? Tell Ben your goal and he will match you.</p>
+    </div>
+    <table class="board">
+      <thead><tr><th scope="col">Program</th><th scope="col">Length</th><th scope="col">Built for</th></tr></thead>
+      <tbody>
+        <tr><td><a href="/programs/#fire-academy" style="text-decoration:none">Fire Academy</a><span class=tag-new>New</span></td><td class="weeks">4 weeks</td><td>Recruits preparing for fire academy physical testing</td></tr>
+        <tr><td><a href="/programs/#powerbuilding" style="text-decoration:none">Powerbuilding</a></td><td class="weeks">12 weeks</td><td>Intermediate lifters building strength and size together</td></tr>
+        <tr><td><a href="/programs/#fat-loss" style="text-decoration:none">Fat Loss</a></td><td class="weeks">8 weeks</td><td>Losing body fat while keeping strength</td></tr>
+        <tr><td><a href="/programs/#comp-prep" style="text-decoration:none">Comp Prep</a></td><td class="weeks">16 weeks</td><td>Natural physique competitors heading to the stage</td></tr>
+        <tr><td><a href="/programs/#military-readiness" style="text-decoration:none">Military Readiness</a></td><td class="weeks">Ongoing</td><td>Guard, active duty and first responders keeping test-ready</td></tr>
+        <tr><td><a href="/programs/#starter" style="text-decoration:none">Starter</a></td><td class="weeks">6 weeks</td><td>New or returning lifters building the habit</td></tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <a class="btn btn-red" href="/contact/">Get matched</a>
+      <a class="btn" href="/programs/">See sample sessions</a>
+    </div>
+  </div>
+</section>
 
-      btn.onclick = function (e) {
-        e.preventDefault();
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden";
-      };
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How coaching works</h2>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3>Tell Ben your goal</h3>
+        <p>Fill in a two-minute form: your goal, experience, days you can train, and any injuries.</p>
+      </li>
+      <li>
+        <h3>Get your program</h3>
+        <p>Ben matches you to a program and sends it with your weekly goal tracker, usually within 24 hours.</p>
+      </li>
+      <li>
+        <h3>Check in every week</h3>
+        <p>Set your goals on Monday, report back on Friday, and get feedback that adjusts the next week.</p>
+      </li>
+    </ol>
+  </div>
+</section>
 
-      span.onclick = function () {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-        resetScorecard();
-      };
+<section class="section on-chalk">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The method</h2>
+      <p class="lede">Programming rooted in Westside conjugate principles, adapted for people with jobs, families and real schedules.</p>
+    </div>
+    <div class="method">
+      <div>
+        <h3>Max effort</h3>
+        <p>Heavy compound lifts worked up to a top set. This is where strength is built and measured.</p>
+      </div>
+      <div>
+        <h3>Repetition effort</h3>
+        <p>Accessory work in the 8 to 15 rep range to build muscle and shore up weak points.</p>
+      </div>
+      <div>
+        <h3>Dynamic effort</h3>
+        <p>Lighter loads moved fast: jumps, sprints, speed work. Power you can use outside the gym.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-          document.body.style.overflow = "auto";
-          resetScorecard();
-        }
-      };
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <h2>Your coach</h2>
+      <p class="lede" style="margin-top:20px">A paramedic's understanding of how the body handles stress, load and recovery, applied to programming that is tested on himself first.</p>
+      <div class="actions"><a class="btn" href="/about-us/benjamin-dragstrem/">Meet Ben</a></div>
+    </div>
+    <ul class="creds">
+      <li><strong>Certified Paramedic (EMT-P)</strong><span>Emergency medicine background behind every program</span></li>
+      <li><strong>15+ years of advanced training</strong><span>Max, repetition and dynamic effort methods</span></li>
+      <li><strong>Natural physique competitor</strong><span>Currently in men's physique competition prep</span></li>
+      <li><strong>Military and first responder programming</strong><span>For National Guard, fire and EMS personnel</span></li>
+    </ul>
+  </div>
+</section>
 
-      // Client questionnaire - 10 questions (6 yes/no, 2 multiple choice, 2 open-ended)
-      const questions = [
-        {
-          question:
-            "Do you consistently complete at least 3 workouts per week?",
-          type: "yesno",
-        },
-        {
-          question: "Have you been free from injury for the past 6 months?",
-          type: "yesno",
-        },
-        {
-          question:
-            "Do you fuel your body with balanced meals and adequate protein daily?",
-          type: "yesno",
-        },
-        {
-          question:
-            "Do you prioritize sleep and typically get at least 7 hours each night?",
-          type: "yesno",
-        },
-        {
-          question:
-            "Do you regularly stretch or include mobility work in your routine?",
-          type: "yesno",
-        },
-        {
-          question:
-            "Do you track your progress and celebrate small fitness milestones?",
-          type: "yesno",
-        },
-        {
-          question:
-            "How many days per week can you realistically commit to working out?",
-          description: "Choose your weekly commitment",
-          type: "choice",
-          options: ["1-2 days", "3-4 days", "5+ days"],
-        },
-        {
-          question: "What type of workouts do you enjoy most?",
-          description: "Select your preferred training style",
-          type: "choice",
-          options: [
-            "Strength Training (weights, resistance)",
-            "Cardio (running, cycling, HIIT)",
-            "Functional/CrossFit (varied movements)",
-            "Flexibility/Mobility (yoga, stretching)",
-          ],
-        },
-        {
-          question: "What are your top 3 fitness goals right now?",
-          description: "e.g., build muscle, lose 10 lbs, improve mobility",
-          type: "textarea",
-          placeholder: "Tell us what you want to achieve...",
-        },
-        {
-          question: "What motivates you to train and stay consistent?",
-          description: "Understanding your 'why' helps us keep you on track",
-          type: "textarea",
-          placeholder:
-            "e.g., family, job performance, health, stress relief, competition, confidence",
-        },
-      ];
-
-      let currentQuestionIndex = 0;
-      let answers = [];
-      let userData = {};
-
-      // Formspree endpoint URL
-      const FORMSPREE_URL = "https://formspree.io/f/xeorvrbp";
-
-      // Function to send data to Formspree
-      function sendToFormspree(data) {
-        fetch(FORMSPREE_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((result) => {
-            console.log("Contact data sent successfully:", result);
-          })
-          .catch((error) => {
-            console.error("Error sending contact data:", error);
-          });
-      }
-
-      // Handle form submission
-      document
-        .getElementById("userDetailsForm")
-        .addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          userData = {
-            firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value,
-            email: document.getElementById("email").value,
-            phone: document.getElementById("phone").value,
-          };
-
-          // Disable submit button to prevent double submission
-          const submitBtn = e.target.querySelector('button[type="submit"]');
-          const originalText = submitBtn.textContent;
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Saving...";
-
-          // Send data to Formspree (don't wait for it to complete)
-          sendToFormspree(userData);
-
-          // Small delay to ensure the request is sent, then proceed
-          setTimeout(() => {
-            // Move to quiz
-            document.getElementById("contactForm").classList.remove("active");
-            document.getElementById("scorecardQuiz").classList.add("active");
-            document.getElementById("totalQuestions").textContent =
-              questions.length;
-
-            displayQuestion();
-
-            // Re-enable button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-          }, 500);
-        });
-
-      function displayQuestion() {
-        const question = questions[currentQuestionIndex];
-        const quizContent = document.getElementById("quizContent");
-
-        let inputHTML = "";
-        if (question.type === "yesno") {
-          inputHTML = `
-                    <div class="yesno-selector">
-                        <button class="yesno-button yes-button" onclick="selectChoice('Yes')">
-                            ✓ Yes
-                        </button>
-                        <button class="yesno-button no-button" onclick="selectChoice('No')">
-                            ✗ No
-                        </button>
-                    </div>
-                `;
-        } else if (question.type === "textarea") {
-          inputHTML = `
-                    <textarea
-                        id="questionInput"
-                        class="question-textarea"
-                        placeholder="${question.placeholder}"
-                        rows="5"
-                    >${answers[currentQuestionIndex] || ""}</textarea>
-                    <button class="cta-button" onclick="submitAnswer()" style="margin-top: 1rem; width: 100%;">
-                        ${
-                          currentQuestionIndex < questions.length - 1
-                            ? "Next Question"
-                            : "Complete Quiz"
-                        }
-                    </button>
-                `;
-        } else if (question.type === "choice") {
-          inputHTML = `
-                    <div class="choice-selector">
-                        ${question.options
-                          .map(
-                            (opt) => `
-                            <button class="choice-button" onclick="selectChoice('${opt}')" data-value="${opt}">
-                                ${opt}
-                            </button>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                `;
-        }
-
-        const descriptionHTML = question.description
-          ? `<p class="question-description">${question.description}</p>`
-          : "";
-
-        quizContent.innerHTML = `
-                <div class="question-container">
-                    <h3 class="question-title">${question.question}</h3>
-                    ${descriptionHTML}
-                    ${inputHTML}
-                </div>
-            `;
-
-        // Update progress
-        document.getElementById("currentQuestion").textContent =
-          currentQuestionIndex + 1;
-        document.getElementById("totalQuestions").textContent =
-          questions.length;
-        updateProgressBar();
-      }
-
-      function submitAnswer() {
-        const input = document.getElementById("questionInput");
-        if (input && input.value.trim()) {
-          answers[currentQuestionIndex] = input.value.trim();
-          moveToNextQuestion();
-        } else {
-          alert("Please provide an answer before continuing.");
-        }
-      }
-
-      function selectChoice(choice) {
-        answers[currentQuestionIndex] = choice;
-        moveToNextQuestion();
-      }
-
-      function moveToNextQuestion() {
-        if (currentQuestionIndex < questions.length - 1) {
-          currentQuestionIndex++;
-          displayQuestion();
-        } else {
-          showResults();
-        }
-      }
-
-      function updateProgressBar() {
-        const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-        document.getElementById("progressFill").style.width = progress + "%";
-      }
-
-      function calculateScore() {
-        let totalScore = 0;
-        const maxScore = 100;
-
-        // Questions 0-5: Yes/No questions (10 points each for "Yes")
-        for (let i = 0; i < 6; i++) {
-          if (answers[i] === "Yes") {
-            totalScore += 10;
-          }
-        }
-
-        // Question 6: Workout frequency (0-20 points)
-        if (answers[6] === "1-2 days") totalScore += 5;
-        else if (answers[6] === "3-4 days") totalScore += 15;
-        else if (answers[6] === "5+ days") totalScore += 20;
-
-        // Question 7: Workout type (10 points - all answers valued equally)
-        if (answers[7]) totalScore += 10;
-
-        // Questions 8-9: Open-ended (5 points each for completion)
-        if (answers[8] && answers[8].length > 10) totalScore += 5;
-        if (answers[9] && answers[9].length > 10) totalScore += 5;
-
-        return totalScore;
-      }
-
-      function showResults() {
-        document.getElementById("scorecardQuiz").classList.remove("active");
-        document.getElementById("scorecardResults").classList.add("active");
-
-        const score = calculateScore();
-        const maxScore = 100;
-        const percentage = Math.round((score / maxScore) * 100);
-
-        // Determine tier and recommendations
-        let tier,
-          tierColor,
-          message,
-          recommendation,
-          actionTitle,
-          actionDescription,
-          actionCTA,
-          actionLink;
-
-        if (percentage >= 70) {
-          tier = "Elite Performer";
-          tierColor = "#00ff88";
-          message =
-            "Outstanding! You're already operating at a high level with strong fitness habits.";
-          recommendation =
-            "You're ready for personalized 1-on-1 coaching to break through plateaus and reach peak performance.";
-          actionTitle = "🎯 Ready for the Next Level?";
-          actionDescription =
-            "Book a 1-on-1 coaching session to optimize your training and achieve elite results.";
-          actionCTA = "Schedule 1-on-1 Coaching";
-          actionLink = "tel:704-491-5510";
-        } else if (percentage >= 40) {
-          tier = "Building Momentum";
-          tierColor = "#ffa500";
-          message =
-            "Great start! You have some solid habits, but there's room to level up your fitness game.";
-          recommendation =
-            "Check out our comprehensive fitness guide to fill in the gaps and build consistency.";
-          actionTitle = "📖 Get the Fitness Starter Guide";
-          actionDescription =
-            "Learn proven strategies to improve your nutrition, recovery, and training consistency.";
-          actionCTA = "Get the Book on Kindle";
-          actionLink =
-            "https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD";
-        } else {
-          tier = "Fresh Start";
-          tierColor = "#ff6b6b";
-          message =
-            "Perfect timing to transform your fitness journey! Everyone starts somewhere.";
-          recommendation =
-            "Let's build a strong foundation with a sample workout to get you moving in the right direction.";
-          actionTitle = "💪 Try This Sample Workout";
-          actionDescription =
-            "A beginner-friendly full-body routine designed to build strength and confidence.";
-          actionCTA = "Download Free Workout";
-          actionLink = "#sample-workout";
-        }
-
-        document.getElementById("resultsContent").innerHTML = `
-                <div class="results-card">
-                    <div class="score-circle" style="background: linear-gradient(135deg, ${tierColor} 0%, ${tierColor}dd 100%);">
-                        <div class="score-number">${percentage}%</div>
-                        <div class="score-label">Fitness Score</div>
-                    </div>
-
-                    <div style="text-align: center; margin-bottom: 2rem;">
-                        <h3 style="color: #1a4d2e; font-size: 2rem; margin-bottom: 1rem;">${tier}</h3>
-                        <p style="font-size: 1.1rem; color: #666; margin-bottom: 1rem;">${message}</p>
-                        <p style="font-size: 1rem; color: #888;">${recommendation}</p>
-                    </div>
-
-                    <div style="margin: 2rem 0; padding: 1.5rem; background: ${tierColor}15; border-left: 4px solid ${tierColor}; border-radius: 10px;">
-                        <h4 style="color: #1a4d2e; margin-bottom: 1rem;">${actionTitle}</h4>
-                        <p style="color: #666; margin-bottom: 1.5rem;">${actionDescription}</p>
-                        <a href="${actionLink}" ${
-          actionLink.startsWith("http")
-            ? 'target="_blank" rel="noopener noreferrer"'
-            : ""
-        } class="cta-button" style="background: ${tierColor};">
-                            ${actionCTA}
-                        </a>
-                    </div>
-
-                    <details style="margin-top: 2rem;">
-                        <summary style="cursor: pointer; font-weight: 600; color: #1a4d2e; padding: 1rem; background: #f9f9f9; border-radius: 10px;">
-                            📋 View Your Complete Responses
-                        </summary>
-                        <div class="score-breakdown" style="margin-top: 1rem;">
-                            ${questions
-                              .map(
-                                (q, i) => `
-                                <div class="breakdown-item" style="display: block; padding: 1rem 0; border-bottom: 1px solid #e0e0e0;">
-                                    <div style="font-weight: 600; color: #1a4d2e; margin-bottom: 0.5rem; font-size: 0.95rem;">${q.question}</div>
-                                    <div style="color: #555; padding-left: 0.5rem; white-space: pre-wrap;">${answers[i]}</div>
-                                </div>
-                            `
-                              )
-                              .join("")}
-                        </div>
-                    </details>
-
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: #f0f0f0; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #1a4d2e; margin-bottom: 0.5rem;">Questions? Let's Talk!</h4>
-                        <p style="font-size: 0.95rem; color: #666; margin-bottom: 1rem;">We'll send your results to: <strong style="color: #00ff88;">${
-                          userData.email
-                        }</strong></p>
-                        <a href="tel:704-491-5510" class="cta-button" style="background: #1a4d2e; margin-top: 0.5rem;">📞 Call 704-491-5510</a>
-                    </div>
-                </div>
-            `;
-      }
-
-      function resetScorecard() {
-        currentQuestionIndex = 0;
-        answers = [];
-        userData = {};
-
-        document.getElementById("contactForm").classList.add("active");
-        document.getElementById("scorecardQuiz").classList.remove("active");
-        document.getElementById("scorecardResults").classList.remove("active");
-
-        document.getElementById("userDetailsForm").reset();
-      }
-
-      document.querySelectorAll(".feature-card").forEach((card) => {
-        card.addEventListener("click", (e) => {
-          e.preventDefault();
-          card.classList.toggle("locked");
-        });
-      });
-    </script>
-  </body>
+<section class="section-tight on-red">
+  <div class="wrap band">
+    <div>
+      <h2>Start with the book</h2>
+      <p class="muted">Ben's sustainable fitness guide covers the basics of training, food and recovery.</p>
+    </div>
+    <a class="btn" href="https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD" rel="noopener">Get it on Kindle</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/images/quadgorilla-logo.png" alt="QuadGorilla Workout Company" width="120" height="120">
+        <p>Strength and conditioning programs from coach Ben Dragstrem. Building stronger, healthier Americans, one rep at a time.</p>
+      </div>
+      <div>
+        <h2>Train</h2>
+        <ul>
+          <li><a href="/programs/">Programs</a></li>
+          <li><a href="/contact/">Get your program</a></li>
+          <li><a href="https://www.amazon.com/Sustainable-Fitness-Guide-Benjamin-Dragstrem-ebook/dp/B0FMTB4MXD" rel="noopener">Ben's guide on Kindle</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:quadgorilla@gmail.com">quadgorilla@gmail.com</a></li>
+          <li><a href="tel:+17044915510">704-491-5510</a></li>
+          <li><a href="https://www.instagram.com/quadgorilla/" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 QuadGorilla Fitness</p>
+      <p>Programs here are general training information, not medical advice. Check with your doctor before starting a new program, especially with an injury or health condition.</p>
+    </div>
+  </div>
+</footer>
+<script>
+  (function () {
+    var b = document.querySelector('.menu-toggle'), n = document.getElementById('site-nav');
+    if (!b || !n) return;
+    b.addEventListener('click', function () {
+      var open = n.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      b.textContent = open ? 'Close' : 'Menu';
+    });
+  })();
+</script>
+</body>
 </html>
